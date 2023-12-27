@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!--content-->
+<div class="content">
+    <div class="products-agileinfo">
+        <h2 class="tittle">KEM CHỐNG NẮNG</h2>
+        <div class="container">
+            <div class="product-agileinfo-grids w3l">
+                <div class="col-md-3 product-agileinfo-grid">
+                    <div class="categories">
+                        <h3>Kem Chống Nắng</h3>
+                        <ul class="tree-list-pad">
+                            <li>
+                                <input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><span></span>Kem Chống Nắng</label>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" id="item-0-0" /><label for="item-0-0">Kem Chống Nắng Skin1004</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="item-0-1" /><label for="item-0-1">Kem Chống Nắng Anessa</label>
+
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="cat-img">
+                        <img class="img-responsive " src="~/images/45.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-9 product-agileinfon-grid1 w3l">
+
+                    <div class="mens-toolbar">
+
+                        <div class="clearfix"></div>
+                    </div>
+
+
+                    @await Component.InvokeAsync("Kemcn", new { id = ViewBag.id })
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--content-->

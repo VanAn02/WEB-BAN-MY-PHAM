@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!--banner-->
+<div class="banner1">
+    <div class="container">
+        <h3><a asp-area="Admin" asp-controller="TaiKhoan" asp-action="Index">Home</a> / <span>Đăng nhập</span></h3>
+    </div>
+</div>
+<!--banner-->
+<!--content-->
+<div class="content">
+ 
+    @await Component.InvokeAsync("Login")
+
+    <!--login-->
+</div>
+

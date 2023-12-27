@@ -1,0 +1,124 @@
+﻿<!--header-->
+
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+            
+            <div class="top-right">
+                <ul>
+                    
+                   
+                    @if (string.IsNullOrEmpty(ViewBag.Username))
+                    {
+                        <li><a href="~/login/index">Đăng Nhập</a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="#">@ViewBag.Username</a></li>
+                        <li><a onclick="DeleteSession()" href="javascript:">Đăng Xuất</a></li>
+                    }
+
+                    <li><a asp-area="Admin" asp-controller="TaiKhoan" asp-action="Create"> Tạo tài khoản mới </a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="heder-bottom">
+        <div class="container">
+            <div class="logo-nav">
+                <div class="logo-nav-left">
+                    <h1><a href="~/pages/index">MP CENTERLA <span>Chất lượng giá rẻ </span></a></h1>
+                </div>
+                <div class="logo-nav-left1">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                       
+                        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="~/pages/index" class="act">Trang Chủ</a></li>
+                                <!-- Mega Menu -->
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Son<b class="caret"></b></a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-3  multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    <h6>MENU</h6>
+                                                    <li><a href="~/pages/products/1">3CE Velvet Lip Tint màu Daffodil</a></li>
+                                                    <li><a href="~/pages/products/2">Son Merzy The Heritage</a></li>
+
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-sm-3  multi-gd-img">
+                                                <a href="~/pages/products"><img src="~/images/son3ce.jpg" alt=" " /></a>
+                                            </div>
+                                            <div class="col-sm-3  multi-gd-img">
+                                                <a href="~/pages/products"><img src="~/images/sonmerzy.jpg" alt=" " /></a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kem Chống Nắng <b class="caret"></b></a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-3  multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    <h6>MENU</h6>
+                                                    <li><a href="~/pages/products1/3">Kem Chống Nắng Skin1004</a></li>
+                                                    <li><a href="~/pages/products1/4">Kem Chống Nắng Anessa </a></li>
+
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-sm-3  multi-gd-img">
+                                                <a href="~/pages/products1/4"><img src="~/images/kcna.jpg" alt=" " /></a>
+                                            </div>
+                                            <div class="col-sm-3  multi-gd-img">
+                                                <a href="~/pages/products1/3"><img src="~/images/kcna1.jpg" alt=" " /></a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li><a href="~/pages/mail">Email</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="logo-nav-right">
+                    <ul class="cd-header-buttons">
+                        <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+                    </ul> <!-- cd-header-buttons -->
+                    <div id="cd-search" class="cd-search">
+                        <form method="get" asp-action="search">
+                            <input name="search" value="@ViewData["getSearch"]" type="search" placeholder="Search...">
+                        </form>
+                    </div>
+                </div>
+                <div class="header-right2">
+                    <div class="cart box_1">
+                        <a href="~/user/pages/checkout">
+                            <h3>
+                                <div class="total">
+                                   s
+                                   
+
+                                </div>
+                                    <img src="~/user/images/bag.png" alt="" />
+                                </h3>
+                            </a>
+                            <p><a asp-controller="Pages" asp-action="Cart" class="simpleCart_empty">Giỏ hàng trống</a></p>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--header-->

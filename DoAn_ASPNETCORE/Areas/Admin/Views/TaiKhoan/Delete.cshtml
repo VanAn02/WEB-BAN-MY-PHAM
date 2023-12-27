@@ -1,0 +1,108 @@
+﻿@model DoAn_ASPNETCORE.Areas.Admin.Models.TaiKhoanModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <div class="sidebar" data-image="~/admin/img/badmin.jpg">
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Quản Lý
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Admin/sanpham/index">
+                        <i class="nc-icon nc-app"></i>
+                        <p>Sản Phẩm</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/loaisanpham/index">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Loại Sản Phẩm</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/hangsanxuat/index">
+                        <i class="nc-icon nc-delivery-fast"></i>
+                        <p>Hãng sản xuất</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/user/index">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>Khách Hàng</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/hoadon/index">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Hóa Đơn</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/chitiethoadon/index">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Chi Tiết Hóa Đơn</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="~/Admin/thongke/index">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Thống Kê</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Bạn có chắc xóa không?</h3>
+                        <div>
+                            <h4>Tài Khoản</h4>
+                            <hr />
+                            <dl class="row">
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.UserName)
+                                </dd>
+
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Password)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Password)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.IsAdmin)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.IsAdmin)
+                                </dd>
+
+
+
+                            </dl>
+
+                            <form asp-action="Delete">
+                                <input type="hidden" asp-for="ID" />
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                <a asp-action="Index">Quay lại danh sách</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

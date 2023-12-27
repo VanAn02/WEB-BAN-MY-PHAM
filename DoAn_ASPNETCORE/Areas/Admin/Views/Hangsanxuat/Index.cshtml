@@ -1,0 +1,345 @@
+﻿@model DoAn_ASPNETCORE.Areas.Admin.Models.HangSanXuatModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="successModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE876;</i>
+                </div>
+                <h4 class="modal-title w-100">Thêm Thành Công!</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="margin-left:90px;" name="btn_ok" class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box" style="background:#b22222">
+                    <i class="material-icons">&#xE872;</i>
+                </div>
+                <h4 class="modal-title w-100">Xóa Thành Công!</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="margin-left:90px;background:#b22222" name="btn_ok" class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="updateModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box" style="background:#3205cd">
+                    <i class="material-icons">&#xE86A;</i>
+                </div>
+                <h4 class="modal-title w-100">Cập Nhật Thành Công!</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="margin-left:90px;background:#3205cd" name="btn_ok" class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm Nhà cung cấp</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="IDMaHangsx" class="control-label"></label>
+                        <input asp-for="IDMaHangsx" class="form-control" />
+                        <span asp-validation-for="IDMaHangsx" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TenHangsx" class="control-label"></label>
+                        <input asp-for="TenHangsx" class="form-control" />
+                        <span asp-validation-for="TenHangsx" class="text-danger"></span>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" name="btn_create_nhacungcap" class="btn btn-primary">Thêm Mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sửa Nhà Cung Cấp</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" id="edit_id" asp-for="ID" />
+                    <div class="form-group">
+                        <label asp-for="IDMaHangsx" class="control-label"></label>
+                        <input asp-for="IDMaHangsx" class="form-control" />
+                        <span asp-validation-for="IDMaHangsx" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TenHangsx" class="control-label"></label>
+                        <input asp-for="TenHangsx" class="form-control" />
+                        <span asp-validation-for="TenHangsx" class="text-danger"></span>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" name="btn_update_nhacungcap" class="btn btn-primary">Cập Nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="sidebar" data-image="~/admin/img/badmin.jpg">
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Quản Lý
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Admin/sanpham/index">
+                        <i class="nc-icon nc-app"></i>
+                        <p>Sản Phẩm</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/loaisanpham/index">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Loại Sản Phẩm</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/hangsanxuat/index">
+                        <i class="nc-icon nc-delivery-fast"></i>
+                        <p>Hãng sản xuất</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/user/index">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>Khách Hàng</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/hoadon/index">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Hóa Đơn</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/chitiethoadon/index">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Chi Tiết Hóa Đơn</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="~/Admin/thongke/index">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Thống Kê</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddModal">Thêm</button>
+                        </p>
+
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IDMaHangsx)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TenHangsx)
+                                    </th>
+
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="dsncc">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @section Scripts{
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            <script>
+                window.onload = function () {
+                    $.ajax({
+                        url: "../../api/NhaCungCapAPI/GetNhaCungCapModel",
+                        type: "GET",
+                        contentType: "Application/json;charset-utf-8",
+                    }).done(function (reponse) {
+                        console.log(reponse);
+                        var newHtml = "";
+
+                        $.each(reponse, function (index, nCC) {
+                            newHtml += '<tr><td>' + nCC.tenNCC + '</td>';
+                            newHtml += '<td>' + nCC.diaChi + '</td>';
+
+                            newHtml += '<td>' + '<button type="button" id="edit_nhacungcap" data-idnhacungcap="' + nCC.id + '" class="btn btn-primary" data-toggle="modal" data-target="#EditModal">Edit</button>';
+                            newHtml += '<button type="button" id="btn_delete_nhacungcap" data-idnhacungcap="' + nCC.id + '" class="btn btn-danger">Delete</button>' + '</td></tr>';
+                        });
+                        $("#dsncc").html(newHtml);
+                    }).fail(function () {
+                        alert('Thất bại !');
+                    });
+                }
+
+                function getNCC(id) {
+                    $.ajax({
+                        url: "../../api/NhaCungCapAPI/GetNhaCungCapModel/" + id,
+                        type: "GET",
+                        contentType: "Application/json;charset-utf-8",
+                        dataType: "json"
+                    }).done(function (reponse) {
+                        $("#edit_id").val(reponse.id);
+                        $("#edit_tenncc").val(reponse.tenNCC);
+                        $("#edit_diachi").val(reponse.diaChi);
+
+
+                    }).fail(function () {
+                        alert('Thất bại !');
+                    });
+                }
+
+                function addNCC() {
+                    var insert = {};
+                    insert.TenNCC = $("#tencc").val();
+                    insert.DiaChi = parseInt($("#diachi").val());
+
+                    $.ajax({
+                        url: "../../api/NhaCungCapAPI/PostNhaCungCapModel",
+                        type: "POST",
+                        contentType: "Application/json;charset-utf-8",
+                        data: JSON.stringify(insert),
+                        dataType: "json"
+                    }).done(function (reponse) {
+                        $("#AddModal").modal('hide');
+                        $("#successModal").modal('show');
+
+                    }).fail(function () {
+                        alert('Thất bại !');
+                    });
+                }
+                function upDateNCC(id) {
+                    var update = {}
+                    update.ID = parseInt(id);
+                    update.TenNCC = $("#edit_tenncc").val();
+                    update.DiaChi = ($("#edit_diachi").val());
+
+                    $.ajax({
+                        url: "../../api/NhaCungCapAPI/PutNhaCungCapModel/" + id,
+                        type: "PUT",
+                        contentType: "Application/json;charset-utf-8",
+                        data: JSON.stringify(update),
+                        dataType: "json"
+                    }).done(function (reponse) {
+                        $("#EditModal").modal('hide');
+                        $("#updateModal").modal('show');
+
+                    }).fail(function () {
+                        alert('Thất bại !');
+                    });
+                }
+
+                function deleteNCC(id) {
+
+                    $.ajax({
+                        url: "../../api/NhaCungCapAPI/DeleteNhaCungCapModel/" + id,
+                        type: "DELETE",
+                        contentType: "Application/json;charset-utf-8",
+                        dataType: "json"
+                    }).done(function (reponse) {
+                        $("#deleteModal").modal('show');
+
+
+                    }).fail(function () {
+                        alert('Thất bại !');
+                    });
+                }
+
+                $(document).ready(function () {
+                    $('button[name=btn_create_nhacungcap]').click(function (e) {
+                        addNCC();
+                        e.preventDefault();
+                    });
+
+
+                    /* [https://api.jquery.com/on/]
+                      Liên kết sự kiện bị phá vỡ khi thực hiện ajax cập nhật đoạn html trước khi load page.
+                      Vì vậy để load trước dsanh, bắt sự kiện tại đoạn html cập nhật thì nên dùng .on() để liên kết sự kiện*/
+
+                    $('body').on('click', '#edit_nhacungcap', function () {
+                        var id = $(this).data("idnhacungcap");
+
+                        getNCC(id);
+                        e.preventDefault();
+                    });
+                    $('body').on('click', '#btn_delete_nhacungcap', function () {
+                        var id = $(this).data("idnhacungcap");
+                        deleteNCC(id);
+                        e.preventDefault();
+                    });
+                    $('button[name=btn_update_nhacungcap]').click(function (e) {
+                        var id = $("#edit_id").val();
+                        upDateNCC(id);
+                        e.preventDefault();
+                    });
+
+
+
+                    $('button[name=btn_ok]').click(function (e) {
+                        location.reload();
+                    });
+
+                });
+
+            </script>
+        }

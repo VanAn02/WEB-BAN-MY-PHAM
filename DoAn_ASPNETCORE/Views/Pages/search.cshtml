@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!--content-->
+<div class="content">
+    <div class="products-agileinfo">
+        <h2 class="tittle">Tìm Kiếm Với Từ Khóa</h2>
+        <div class="container">
+            <div class="product-agileinfo-grids w3l">
+                
+                <div class="col-md-9 product-agileinfon-grid1 w3l">
+                  
+                    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                       
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                                    <div class="product-tab">
+
+                                        @foreach (var item in Model)
+                                        {
+                                        <div class="col-md-4 product-tab-grid simpleCart_shelfItem">
+                                            <div class="grid-arr">
+                                                <div class="grid-arrival">
+                                                    <figure>
+                                                        <a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
+                                                            <div class="grid-img">
+                                                                <img src="~/images/@item.Image" class="img-responsive" alt="">
+                                                            </div>
+                                                            <div class="grid-img">
+                                                                <img src="images/p5.jpg" class="img-responsive" alt="">
+                                                            </div>
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                                <div class="block">
+                                                    <div class="starbox small ghosting"> </div>
+                                                </div>
+                                                <div class="women">
+                                                    <h6><a href="single.html">@item.TenSP</a></h6>
+                                                    
+                                                    <p><del>@item.Gia</del><em class="item_price">@item.GiaMoi</em></p>
+                                                    <a asp-route="addcart" 
+                   asp-route-productid="@item.ID" data-text="Add To Cart" class="my-cart-b item_add">Thêm vào giỏ hàng</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+
+                                                                                
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!--content-->

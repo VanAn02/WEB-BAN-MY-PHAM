@@ -1,0 +1,157 @@
+﻿@model DoAn_ASPNETCORE.Areas.Admin.Models.SanPhamViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="wrapper">
+    <div class="sidebar" data-image="~/admin/img/badmin.jpg">
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Quản Lý
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Admin/sanpham/index">
+                        <i class="nc-icon nc-app"></i>
+                        <p>Sản Phẩm</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/loaisanpham/index">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Loại Sản Phẩm</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/hangsanxuat/index">
+                        <i class="nc-icon nc-delivery-fast"></i>
+                        <p>Hãng sản xuất</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/user/index">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>Khách Hàng</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/hoadon/index">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Hóa Đơn</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="~/Admin/chitiethoadon/index">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Chi Tiết Hóa Đơn</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="~/Admin/thongke/index">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Thống Kê</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <p>
+                            <a asp-area="Admin" asp-controller="SanPham" asp-action="Create">Thêm sản phẩm </a>
+                        </p>
+                        <form asp-controller="SanPham" asp-action="Index" method="get">
+                            <p>
+
+                                Tên Sản Phẩm: <input type="text" asp-for="SearchString"><button type="submit" class="btn-facebook">Tìm</button>
+                            </p>
+                        </form>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].TenSP)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].IDMaLoai)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].IDHangsx)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].Gia)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].Image)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].Image_List)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].SoLuong)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SanPhams[0].NgayLap)
+                                    </th>
+                                    
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.SanPhams)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TenSP)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IDMaLoai)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IDHangsx)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gia)
+                                        </td>
+
+                                        <td>
+                                            <img src="~/images/@Html.DisplayFor(modelItem => item.Image)" class="img-thumbnail" />
+                                        </td>
+                                        <td>
+                                            <img src="~/images/@Html.DisplayFor(modelItem => item.Image_List)" class="img-thumbnail" />
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoLuong)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NgayLap)
+                                        </td>
+                                        
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
